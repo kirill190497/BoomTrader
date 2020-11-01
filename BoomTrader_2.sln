@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.36
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoomTrader_2", "BoomTrader_2\BoomTrader_2.csproj", "{E625D2C5-F447-454D-B5CC-7B121AC14E41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E625D2C5-F447-454D-B5CC-7B121AC14E41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E625D2C5-F447-454D-B5CC-7B121AC14E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E625D2C5-F447-454D-B5CC-7B121AC14E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E625D2C5-F447-454D-B5CC-7B121AC14E41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CAB7B69-307E-4091-A62D-CFD17B3D119F}
+	EndGlobalSection
+EndGlobal
