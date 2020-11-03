@@ -18,7 +18,7 @@ namespace BoomTrader_2
         public TabPage Protab = new TabPage("Pro settings");
         public static MainForm Instance { get; private set; }
 
-        private string CryptPass = "BooM2020Trader";
+        private string CryptPass = "BooM2020Trader"; //  
         public MainForm()
         {
             InitializeComponent();
@@ -79,14 +79,14 @@ namespace BoomTrader_2
 
                 try
                 {
-                    licenceKey.Text = Security.Decode(ini.Read("Licence", "SECURITY"), CryptPass);
+
                     apiKey.Text = Security.Decode(ini.Read("APIkey", "SECURITY"), CryptPass);
                     secretKey.Text = Security.Decode(ini.Read("Secret", "SECURITY"), CryptPass);
 
                 }
                 catch
                 {
-                    licenceKey.Text = "";
+
                     apiKey.Text = "";
                     secretKey.Text = "";
 
@@ -260,14 +260,14 @@ namespace BoomTrader_2
                 var settings = Request.GetJSON("https://license.boomtrader.info/settings/default", "");
                 try
                 {
-                    licenceKey.Text = Security.Decode(ini.Read("Licence", "SECURITY"), CryptPass);
+
                     apiKey.Text = Security.Decode(ini.Read("APIkey", "SECURITY"), CryptPass);
                     secretKey.Text = Security.Decode(ini.Read("Secret", "SECURITY"), CryptPass);
 
                 }
                 catch
                 {
-                    licenceKey.Text = "";
+
                     apiKey.Text = "";
                     secretKey.Text = "";
 
@@ -334,12 +334,8 @@ namespace BoomTrader_2
                 }
                 ini.Write("selected", "ALL-" + select, "TRADE");
             }
+            ini.Write("trailing", trailingsValue.Value.ToString(), "SECRET");
 
-            if (bot.License.Item3 == "full-pro")
-            {
-                ini.Write("trailing", trailingsValue.Value.ToString(), "SECRET");
-
-            }
 
         }
 
@@ -510,7 +506,7 @@ namespace BoomTrader_2
                 decimal half = decimal.Round(bot.UsdtBalance * (VolumeMultiple.Value / 100));
                 if (half > 1)
                 {
-                    posVolume.Value = half ;
+                    posVolume.Value = half;
                 }
                 else
                     posVolume.Value = 1;
@@ -542,100 +538,92 @@ namespace BoomTrader_2
         }
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            if (bot != null && bot.License != null)
+            if (bot != null)
             {
 
-                if (bot.License.Item1)
+
+                if (risks.Checked)
                 {
-                    if (risks.Checked)
+                    if (selected.Items.Count != 0)
                     {
-                        if (selected.Items.Count != 0)
+                        if (selected.Items.Count >= (buyCount.Value + sellCount.Value))
                         {
-                            if (selected.Items.Count >= (buyCount.Value + sellCount.Value))
+                            if ((buyCount.Value != 0 && sellCount.Value != 0))
                             {
-                                if ((buyCount.Value != 0 && sellCount.Value != 0))
+                                bot.SelectedSymbols = new List<string>();
+                                foreach (var it in selected.Items)
                                 {
-                                    bot.SelectedSymbols = new List<string>();
-                                    foreach (var it in selected.Items)
-                                    {
-                                        bot.SelectedSymbols.Add(it.ToString());
-                                    }
-
-
-
-                                    WriteSettings();
-
-
-
-                                    if (bot.settings.KeyExists("api", "TELEGRAM") && bot.settings.KeyExists("name", "TELEGRAM"))
-                                    {
-                                        var api = bot.settings.Read("api", "TELEGRAM");
-                                        var name = bot.settings.Read("name", "TELEGRAM");
-
-                                        bot.Telegram = new Telegram(api, name);
-                                    }
-
-                                    bot.Cfg = new Config
-                                    {
-                                        buyCount = Convert.ToInt32(buyCount.Value),
-                                        sellCount = Convert.ToInt32(sellCount.Value),
-                                        spreadEntry = entrySpread.Value,
-                                        volume = posVolume.Value,
-                                        closeProfit = closeProfit.Value,
-                                        trailing = trailing.Checked,
-                                        trailingValue = trailingsValue.Value,
-                                        noEnter = noOpen.Checked,
-                                        leverage = Convert.ToInt32(leverage.Value),
-                                        averageBefore = average.Value,
-                                        averageCount = averageCount.Value,
-                                        stopLoss = stopLoss.Value,
-                                        stopLossState = stopLossState.Checked,
-
-                                    };
-
-
-                                    bot.StartAsync();
-                                    SwitchInterfase();
-                                    tabs.SelectedTab = infoPage;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Sell and Buy values can't be zero");
+                                    bot.SelectedSymbols.Add(it.ToString());
                                 }
 
+
+
+                                WriteSettings();
+
+
+
+                                if (bot.settings.KeyExists("api", "TELEGRAM") && bot.settings.KeyExists("name", "TELEGRAM"))
+                                {
+                                    var api = bot.settings.Read("api", "TELEGRAM");
+                                    var name = bot.settings.Read("name", "TELEGRAM");
+
+                                    bot.Telegram = new Telegram(api, name);
+                                }
+
+                                bot.Cfg = new Config
+                                {
+                                    buyCount = Convert.ToInt32(buyCount.Value),
+                                    sellCount = Convert.ToInt32(sellCount.Value),
+                                    spreadEntry = entrySpread.Value,
+                                    volume = posVolume.Value,
+                                    closeProfit = closeProfit.Value,
+                                    trailing = trailing.Checked,
+                                    trailingValue = trailingsValue.Value,
+                                    noEnter = noOpen.Checked,
+                                    leverage = Convert.ToInt32(leverage.Value),
+                                    averageBefore = average.Value,
+                                    averageCount = averageCount.Value,
+                                    stopLoss = stopLoss.Value,
+                                    stopLossState = stopLossState.Checked,
+
+                                };
+
+
+                                bot.StartAsync();
+                                SwitchInterfase();
+                                tabs.SelectedTab = infoPage;
                             }
                             else
                             {
-                                MessageBox.Show("Sell and Buy counts exceeds Selected pairs");
+                                MessageBox.Show("Sell and Buy values can't be zero");
                             }
 
                         }
                         else
                         {
-                            MessageBox.Show("Selected empty");
+                            MessageBox.Show("Sell and Buy counts exceeds Selected pairs");
                         }
 
                     }
                     else
                     {
-                        MessageBox.Show("Please read help");
-                        tabs.SelectedTab = helpPage;
+                        MessageBox.Show("Selected empty");
                     }
 
                 }
-
                 else
                 {
-                    MessageBox.Show(bot.License.Item2);
-                    tabs.SelectedTab = loginPage;
-                    ((Control)this.loginPage).Enabled = true;
+                    MessageBox.Show("Please read help");
+                    tabs.SelectedTab = helpPage;
                 }
+
+
 
             }
 
             else
             {
-                MessageBox.Show("Check license");
+                MessageBox.Show("Check api keys");
                 tabs.SelectedTab = loginPage;
                 ((Control)this.loginPage).Enabled = true;
             }
@@ -772,7 +760,7 @@ namespace BoomTrader_2
 
 
         }
-        public void UpdateVolume() 
+        public void UpdateVolume()
         {
             bot.Cfg.volume = posVolume.Value;
         }
@@ -788,48 +776,39 @@ namespace BoomTrader_2
             if (wallet != "error")
             {
                 Log.Add("Wallet: " + wallet, Color.Blue, send: false);
-                var licence = Security.checkLicence(licenceKey.Text, wallet);
-                if (licence.Item1)
+
+
+
+                ini.Write("APIkey", Security.Encode(apiKey.Text, CryptPass), "SECURITY");
+                ini.Write("Secret", Security.Encode(secretKey.Text, CryptPass), "SECURITY");
+
+
+
+                ((Control)this.loginPage).Enabled = false;
+                tabs.SelectedTab = settingsPage;
+
+
+                Monitor.MonitorServer.Start();
+                ProSettings("full-pro");
+
+                try
                 {
-                    if (licence.Item3.StartsWith("full"))
+                    if (Multiplier != 0M)
                     {
-                        Monitor.MonitorServer.Start();
+                        if (Multiplier > VolumeMultiple.Maximum)
+                            Multiplier = VolumeMultiple.Maximum;
+                        VolumeMultiple.Value = Multiplier;
                     }
-                    ini.Write("APIkey", Security.Encode(apiKey.Text, CryptPass), "SECURITY");
-                    ini.Write("Secret", Security.Encode(secretKey.Text, CryptPass), "SECURITY");
-                    ini.Write("Licence", Security.Encode(licenceKey.Text, CryptPass), "SECURITY");
-
-                    Log.Add(licence.Item2, Color.Green, send: false);
-                    bot.License = licence;
-                    ((Control)this.loginPage).Enabled = false;
-                    tabs.SelectedTab = settingsPage;
-
-
-
-                    ProSettings(licence.Item3);
-                    
-                    try
-                    {
-                        if (Multiplier != 0M)
-                        {
-                            if (Multiplier > VolumeMultiple.Maximum)
-                                Multiplier = VolumeMultiple.Maximum;
-                            VolumeMultiple.Value = Multiplier;
-                        }
-                        else
-                            VolumeMultiple.Value = Convert.ToDecimal(ini.Read("volumepercent", "TRADE"));
-                    }
-                    catch
-                    {
-                        VolumeMultiple.Value = 50;
-                    }
-
+                    else
+                        VolumeMultiple.Value = Convert.ToDecimal(ini.Read("volumepercent", "TRADE"));
                 }
-                else
+                catch
                 {
-                    Log.Add(licence.Item2, Color.Red);
-                    tabs.SelectedTab = infoPage;
+                    VolumeMultiple.Value = 50;
                 }
+
+
+
 
             }
 
@@ -1012,7 +991,12 @@ namespace BoomTrader_2
                 VolumeMultiple.Value = 50;
             }
             bot.GetBalances();
-            posVolume.Value = decimal.Round(bot.UsdtBalance * (VolumeMultiple.Value / 100));
+            var volume = decimal.Round(bot.UsdtBalance * (VolumeMultiple.Value / 100));
+
+            if (volume >= posVolume.Minimum && volume <= posVolume.Maximum)
+                posVolume.Value = volume;
+            else
+                posVolume.Value = volume > posVolume.Maximum ? posVolume.Maximum : posVolume.Minimum;
             var ini = new IniFile("settings.ini");
             ini.Write("changeposvol", AllowPosVolume.Checked.ToString(), "SECRET");
         }

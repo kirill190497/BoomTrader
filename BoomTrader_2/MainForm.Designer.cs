@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tabs = new System.Windows.Forms.TabControl();
@@ -729,7 +729,7 @@
             this.info.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.info.HideSelection = false;
             this.info.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem2});
             this.info.Location = new System.Drawing.Point(10, 10);
             this.info.MultiSelect = false;
             this.info.Name = "info";
@@ -958,8 +958,10 @@
             this.licenceKey.Location = new System.Drawing.Point(10, 10);
             this.licenceKey.Name = "licenceKey";
             this.licenceKey.PlaceholderText = "Licence";
+            this.licenceKey.ReadOnly = true;
             this.licenceKey.Size = new System.Drawing.Size(226, 23);
             this.licenceKey.TabIndex = 0;
+            this.licenceKey.Text = "FREE";
             // 
             // quotes
             // 

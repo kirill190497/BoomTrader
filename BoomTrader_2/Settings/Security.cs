@@ -2,12 +2,10 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Management;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 
 namespace BoomTrader_2.Settings
 {
@@ -103,11 +101,11 @@ namespace BoomTrader_2.Settings
             if (serverAuth(licenceServer, ip))
             {
                 int unixTime = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
-                
+
                 JObject Answer;
                 try
                 {
-                    Answer = JObject.Parse(Request.GET(licenceServer, "key=" + key + "&wallet=" + wallet +  "&version=" + Resources.Version + "&hwid=" + GetMAC()));
+                    Answer = JObject.Parse(Request.GET(licenceServer, "key=" + key + "&wallet=" + wallet + "&version=" + Resources.Version + "&hwid=" + GetMAC()));
                 }
                 catch
                 {
@@ -145,6 +143,6 @@ namespace BoomTrader_2.Settings
             return macAddr;
         }
 
-       
+
     }
 }

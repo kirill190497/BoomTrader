@@ -42,7 +42,7 @@ namespace BoomTrader_2
             if (save)
             {
                 Save(date + " - " + message);
-                
+
             }
             if (send && Monitor.MonitorServer.isStarted())
             {

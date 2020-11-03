@@ -78,7 +78,7 @@ namespace BoomTrader_2.Monitor
         {
             // Создаем UdpClient для чтения входящих данных
             bool opened = false;
-            
+
             while (!opened)
             {
                 try { receivingUdpClient = new UdpClient(localPort); opened = true; }
@@ -95,9 +95,9 @@ namespace BoomTrader_2.Monitor
 
                 while (isCancellationRequested)
                 {
-                    
-                        
-                    
+
+
+
                     // Ожидание дейтаграммы
                     byte[] receiveBytes = receivingUdpClient.Receive(
                        ref RemoteIpEndPoint);
@@ -125,7 +125,7 @@ namespace BoomTrader_2.Monitor
                         case "show":
                             MainForm.Instance.BeginInvoke((Action)(() =>
                             {
-                                
+
                                 MainForm.Instance.Show();
                                 MainForm.Instance.WindowState = System.Windows.Forms.FormWindowState.Normal;
                                 MainForm.Instance.Activate();
@@ -136,14 +136,14 @@ namespace BoomTrader_2.Monitor
                             break;
 
                     }
-                    
+
 
 
                 }
             }
             catch (SocketException)
             {
-                
+
             }
             catch (Exception ex)
             {
@@ -151,7 +151,7 @@ namespace BoomTrader_2.Monitor
                 Log.Add("Exception: " + ex.Message, System.Drawing.Color.Orange);
             }
         }
-        
+
         public static string GetSettings()
         {
             string path = Directory.GetCurrentDirectory();
@@ -184,13 +184,13 @@ namespace BoomTrader_2.Monitor
             if (receivingUdpClient != null)
                 receivingUdpClient.Close();
             receivingUdpClient = null;
-                                
-            
+
+
         }
         public static bool isStarted()
         {
             bool status = false;
-            if (remoteIPAddress != null )
+            if (remoteIPAddress != null)
                 status = true;
             return status;
         }
@@ -205,14 +205,15 @@ namespace BoomTrader_2.Monitor
                 string json = "{\"log\":{\"message\":\"" + message + "\",\"date\":\"" + date.Replace("/", "-") + "\",\"port\":\"" + localPort + "\",\"name\":\"" + dir + "\"}}";
                 Send(json);
             }
-            catch (Exception){ 
+            catch (Exception)
+            {
 
             }
 
 
         }
 
-        
+
 
         private static string Hello()
         {
@@ -220,20 +221,20 @@ namespace BoomTrader_2.Monitor
             var dir = path.Split("\\")[^1];
             bool window = MainForm.Instance.Visible;// ? true : false;
 
-            string hello = "{\"hello\":"+
-                "{\"folder\":\"" + dir + 
-                "\",\"path\":\"" + path.Replace("\\","\\\\") + 
-                "\",\"calculated\":\"" + TraderBot.Instance.CalculatedPnL + 
+            string hello = "{\"hello\":" +
+                "{\"folder\":\"" + dir +
+                "\",\"path\":\"" + path.Replace("\\", "\\\\") +
+                "\",\"calculated\":\"" + TraderBot.Instance.CalculatedPnL +
                 "\",\"average-pnl\":\"" + TraderBot.Instance.AveragingSpread +
                 "\",\"spread\":\"" + TraderBot.Instance.Spread +
                 "\",\"long-pnl\":\"" + TraderBot.Instance.BuyPNL +
                 "\",\"short-pnl\":\"" + TraderBot.Instance.SellPNL +
                 "\",\"unrealized\":\"" + TraderBot.Instance.UnrealizedPnL +
-                "\",\"close\":\"" + TraderBot.Instance.CloseProfit + 
-                "\",\"status\":\"" + TraderBot.Instance.Status + 
-                "\",\"window\":\"" + window + 
-                "\",\"wallet\":\"" + TraderBot.Instance.GetWallet() + 
-                "\",\"balances\":" + 
+                "\",\"close\":\"" + TraderBot.Instance.CloseProfit +
+                "\",\"status\":\"" + TraderBot.Instance.Status +
+                "\",\"window\":\"" + window +
+                "\",\"wallet\":\"" + TraderBot.Instance.GetWallet() +
+                "\",\"balances\":" +
                     "{\"usdt\":\"" + TraderBot.Instance.UsdtBalance +
                     "\",\"available\":\"" + TraderBot.Instance.AvailableBalance +
                     "\",\"margin\":\"" + TraderBot.Instance.marginBalance +
@@ -244,7 +245,7 @@ namespace BoomTrader_2.Monitor
 
             return hello;
         }
-        
+
     }
 
 }
