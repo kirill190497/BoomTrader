@@ -22,7 +22,7 @@ namespace BoomTrader_2
                     Add(symbol["symbol"].ToString());
 
                 }
-                //Add("");
+                
             }
             catch (Exception)
             {

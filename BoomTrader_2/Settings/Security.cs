@@ -76,61 +76,7 @@ namespace BoomTrader_2.Settings
             return Encoding.UTF8.GetString(plainTextBytes, 0, byteCount);
         }
 
-        #region Authentification Licence
-        private static bool serverAuth(string server, string ip)
-        {
-            var serverIP = "";
-            IPAddress[] ipaddress = Dns.GetHostAddresses(server.Replace("https://", "").Replace("/auth", ""));
-            foreach (IPAddress ip4 in ipaddress.Where(ip => ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork))
-            {
-                serverIP = ip4.ToString();
-            }
-            if (serverIP == ip)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public static Tuple<bool, string, string> checkLicence(string key, string wallet)
-        {
-            var ip = "194.67.92.118";
-            var licenceServer = "https://license.boomtrader.info/auth";
-            if (serverAuth(licenceServer, ip))
-            {
-                int unixTime = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
-
-                JObject Answer;
-                try
-                {
-                    Answer = JObject.Parse(Request.GET(licenceServer, "key=" + key + "&wallet=" + wallet + "&version=" + Resources.Version + "&hwid=" + GetMAC()));
-                }
-                catch
-                {
-                    Answer = JObject.Parse("{'type':'error', 'message':'Error request license or error on license server'}");
-                }
-
-                // +"&signature="+ signature
-                var type = Answer["type"].ToString();
-                if (type != "error")
-                {
-                    //TraderBot.Instance.Licence = key;
-
-                    return new Tuple<bool, string, string>(true, Answer["message"].ToString(), type);
-
-
-                }
-                else { return new Tuple<bool, string, string>(false, Answer["message"].ToString(), type); }
-
-            }
-            else
-            {
-                return new Tuple<bool, string, string>(false, "Fail Auth license server", "error");
-            }
-        }
-        #endregion
+        
         public static string GetMAC()
         {
             var macAddr =
