@@ -628,7 +628,7 @@ namespace BoomTrader_2
             }
             try
             {
-                tempPercents[1] = temp[^1];
+                tempPercents[1] = temp[0];
                 temp.Clear();
             }
             catch
@@ -644,13 +644,13 @@ namespace BoomTrader_2
                 {
                     if (i.Symbol == item.Symbol && item != null)
                     {
-                        if (i.Quantity > 0)
+                        if (i.PositionSide == PositionSide.Long)
                         {
                             Long = i.UnrealizedPnL;
 
                         }
 
-                        else if (i.Quantity < 0)
+                        else if (i.PositionSide == PositionSide.Short)
                         {
                             Short = i.UnrealizedPnL;
 

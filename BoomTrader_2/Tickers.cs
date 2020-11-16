@@ -13,7 +13,7 @@ namespace BoomTrader_2
 
         public Tickers()
         {
-
+            
             try
             {
                 JObject exinfo = JObject.Parse(Request.GET("https://fapi.binance.com/fapi/v1/exchangeInfo", ""));
