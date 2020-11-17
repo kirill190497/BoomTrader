@@ -161,7 +161,7 @@ namespace BoomTrader_2 {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 0.4.3.3.
+        ///   Ищет локализованную строку, похожую на 0.4.3.4.
         /// </summary>
         internal static string Version {
             get {
