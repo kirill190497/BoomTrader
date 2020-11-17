@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tabs = new System.Windows.Forms.TabControl();
@@ -237,7 +237,7 @@
             // 
             this.averageCount.Location = new System.Drawing.Point(250, 180);
             this.averageCount.Maximum = new decimal(new int[] {
-            10,
+            25,
             0,
             0,
             0});
@@ -729,7 +729,7 @@
             this.info.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.info.HideSelection = false;
             this.info.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.info.Location = new System.Drawing.Point(10, 10);
             this.info.MultiSelect = false;
             this.info.Name = "info";
