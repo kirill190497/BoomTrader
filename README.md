@@ -8,6 +8,7 @@
 > ETH (ERC20): 0x5d680c19b566020e2297b4a5905ef302ac03cf14    
 
 
+> Binance registration: https://www.binance.cc/ru/register?ref=HIV0WI05
 
 Market neutral basket trading bot for Binance Futures
 THE ALGORITHM OF THE BOT
