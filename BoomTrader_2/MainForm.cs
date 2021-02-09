@@ -257,7 +257,7 @@ namespace BoomTrader_2
             }
             else
             {
-                var settings = Request.GetJSON("https://license.boomtrader.info/settings/default", "");
+                //var settings = Request.GetJSON("https://license.boomtrader.info/settings/default", "");
                 try
                 {
 
@@ -273,7 +273,7 @@ namespace BoomTrader_2
 
                 }
 
-                try
+                /*try
                 {
                     entrySpread.Value = Convert.ToDecimal(settings["entry_spread"]);
                 }
@@ -292,7 +292,7 @@ namespace BoomTrader_2
 
                 stopLossState.Checked = Convert.ToBoolean(settings["stoploss_state"]);
                 trailing.Checked = Convert.ToBoolean(settings["trailings_state"]);
-
+                */
             }
         }
         public void WriteSettings()
@@ -393,6 +393,8 @@ namespace BoomTrader_2
                 */
                 Protab.Controls.Add(AllowPosVolume);
                 Protab.Controls.Add(AllowChangeBaskets);
+                Protab.Controls.Add(NoCheckLeverage);
+
 
                 Protab.Location = new Point(4, 24);
                 Protab.Name = "proPage";

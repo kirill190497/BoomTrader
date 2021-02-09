@@ -111,6 +111,7 @@
             this.martingale = new System.Windows.Forms.CheckBox();
             this.AllowPosVolume = new System.Windows.Forms.CheckBox();
             this.AllowChangeBaskets = new System.Windows.Forms.CheckBox();
+            this.NoCheckLeverage = new System.Windows.Forms.CheckBox();
             this.settingSlot = new System.Windows.Forms.ComboBox();
             this.tabs.SuspendLayout();
             this.settingsPage.SuspendLayout();
@@ -1101,6 +1102,17 @@
             this.AllowChangeBaskets.UseVisualStyleBackColor = true;
             this.AllowChangeBaskets.CheckedChanged += new System.EventHandler(this.AllowChangeBaskets_CheckedChanged);
             // 
+            // NoCheckLeverage
+            // 
+            this.AllowChangeBaskets.AutoSize = true;
+            this.AllowChangeBaskets.Location = new System.Drawing.Point(220, 50);
+            this.AllowChangeBaskets.Name = "NoCheckLeverage";
+            this.AllowChangeBaskets.Size = new System.Drawing.Size(83, 19);
+            this.AllowChangeBaskets.TabIndex = 0;
+            this.AllowChangeBaskets.Text = "Don`t Check Leverage";
+            this.AllowChangeBaskets.UseVisualStyleBackColor = true;
+            
+            // 
             // settingSlot
             // 
             this.settingSlot.AllowDrop = true;
@@ -1234,6 +1246,7 @@
         public System.Windows.Forms.CheckBox martingale;
         public System.Windows.Forms.CheckBox AllowPosVolume;
         public System.Windows.Forms.CheckBox AllowChangeBaskets;
+        public System.Windows.Forms.CheckBox NoCheckLeverage;
         private System.Windows.Forms.NumericUpDown VolumeMultiple;
         private System.Windows.Forms.Button openFolder;
         public System.Windows.Forms.ListBox selected;

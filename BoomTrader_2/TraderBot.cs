@@ -432,7 +432,7 @@ namespace BoomTrader_2
                     if (Math.Abs(Weights) > 0.3M && CalculatedPnL < 0)
                     {
                         //Log.Add(Weights.ToString(), Color.Black);
-                        NeedToClose = BasketAlignment();
+                       NeedToClose = BasketAlignment();
 
 
                     }
@@ -906,10 +906,12 @@ namespace BoomTrader_2
             }
             else
             {
-                foreach (var it in SelectedSymbols.ToList())
-                {
-                    SetLeverage(it, Cfg.leverage);
-
+                if (!mf.NoCheckLeverage.Checked) 
+                { 
+                    foreach (var it in SelectedSymbols.ToList())
+                    {
+                        SetLeverage(it, Cfg.leverage);
+                    }
                 }
                 foreach (var it in SelectedSymbols.ToList())
                 {
