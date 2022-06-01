@@ -1,7 +1,6 @@
 # BoomTrader
 
-![BoomTrader](https://boomtrader.info/wp-content/uploads/2020/10/nastrojka-2.png)
-
+For bug fixes and improvements to this bot, you can contact me in telegram: t.me/nikulin_kirill
 > `Donate: `   
 > USDT (TRC20): TVZYRSS2oY1gNcxSokhUtcJ3aRgvsmetCR    
 > BTC: 13yqAtVZL4PgTFU7fEZ3Y1ZZBNAp5JunCq    
