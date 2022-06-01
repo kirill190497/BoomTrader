@@ -1,12 +1,13 @@
 # BoomTrader
 
-For bug fixes and improvements to this bot, you can contact me in telegram: t.me/nikulin_kirill
+**For bug fixes and improvements to this bot, you can contact me in telegram: [@nikulin_kirill](https://t.me/nikulin_kirill)**
+ 
+
+
 > `Donate: `   
 > USDT (TRC20): TVZYRSS2oY1gNcxSokhUtcJ3aRgvsmetCR    
 > BTC: 13yqAtVZL4PgTFU7fEZ3Y1ZZBNAp5JunCq    
 > ETH (ERC20): 0x5d680c19b566020e2297b4a5905ef302ac03cf14    
-
-
 > Binance registration: https://www.binance.cc/ru/register?ref=HIV0WI05
 
 Market neutral basket trading bot for Binance Futures
