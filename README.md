@@ -16,5 +16,5 @@ The bot tracks discrepancies in real time (for selected futures contracts from t
 
 
 
-Description: https://boomtrader.info
+~~Description: https://boomtrader.info~~
 
