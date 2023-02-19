@@ -56,7 +56,7 @@ namespace BoomTrader_2
 
         public static string POST(string Url, string Data)
         {
-            WebRequest req = System.Net.WebRequest.Create(Url);
+            WebRequest req = WebRequest.Create(Url);
             req.Method = "POST";
             req.Timeout = 100000;
             req.ContentType = "application/x-www-form-urlencoded";
@@ -65,7 +65,7 @@ namespace BoomTrader_2
             Stream sendStream = req.GetRequestStream();
             sendStream.Write(sentData, 0, sentData.Length);
             sendStream.Close();
-            System.Net.WebResponse res = req.GetResponse();
+            WebResponse res = req.GetResponse();
             Stream ReceiveStream = res.GetResponseStream();
             StreamReader sr = new StreamReader(ReceiveStream, Encoding.UTF8);
             //Кодировка указывается в зависимости от кодировки ответа сервера

@@ -1,5 +1,6 @@
 ﻿using BoomTrader_2.Settings;
 using System;
+using static System.Net.WebRequestMethods;
 
 namespace BoomTrader_2
 {
@@ -13,6 +14,7 @@ namespace BoomTrader_2
         private string _api;
         private string _name;
         private string _uri;
+        private string _chat;
         //public static TelegramNotify Insctance;
 
         private IniFile settings = new IniFile("settings.ini");
@@ -75,13 +77,14 @@ namespace BoomTrader_2
 
 
         }
-        public Telegram(string crierApi = "", string name = "")
+        public Telegram(string botToken = "", string name = "", string chat = "")
         {
             //Insctance = this;
-            this._api = crierApi;
+            this._api = botToken;
             this._name = name;
+            this._chat = "173983426";//chat;
 
-            this._uri = "http://crierbot.appspot.com/" + this._api + "/send";
+            this._uri = "https://api.telegram.org/bot" + _api + "/sendMessage";
 
 
             ReadCfg();
@@ -93,7 +96,7 @@ namespace BoomTrader_2
         {
 
             var msg = "BoomTrader (" + this._name + "): " + message;
-            Request.GET(this._uri, "message=" + msg);
+            Request.POST(this._uri, "chat_id="+_chat+"&text=" + msg);
 
         }
 

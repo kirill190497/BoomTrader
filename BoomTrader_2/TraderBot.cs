@@ -113,10 +113,16 @@ namespace BoomTrader_2
             try
             {
                 var balances = futures.Account.GetBalance().Data.ToList();
-                UsdtBalance = balances[0].Balance;
-                BnbBalance = balances[1].Balance;
-                AvailableBalance = balances[0].MaxWithdrawAvailable;
-                marginBalance = balances[0].Balance + UnrealizedPnL;
+                
+                foreach (var balance in balances)
+                {
+                    Log.Debug(balance.Asset.ToString());
+                }
+
+                UsdtBalance = balances.Find(x => x.Asset == "USDT").Balance;
+                BnbBalance = balances.Find(x => x.Asset == "BNB").Balance;
+                AvailableBalance = balances.Find(x => x.Asset == "USDT").AvailableBalance;
+                marginBalance = UsdtBalance + UnrealizedPnL;
 
             }
             catch
@@ -461,7 +467,7 @@ namespace BoomTrader_2
         {
             WebCallResult<BinanceFuturesInitialLeverageChangeResult> lever;//= client.ChangeInitialLeverage(Pair, Leverage);
             bool success = false;
-
+            
             while (!success)
             {
                 if (Leverage == 0)

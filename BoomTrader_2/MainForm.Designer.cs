@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tabs = new System.Windows.Forms.TabControl();
@@ -77,6 +77,7 @@
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.telegramPage = new System.Windows.Forms.TabPage();
+            this.tgChatID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tgName = new System.Windows.Forms.TextBox();
             this.tgTest = new System.Windows.Forms.Button();
@@ -730,7 +731,7 @@
             this.info.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.info.HideSelection = false;
             this.info.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem2});
             this.info.Location = new System.Drawing.Point(10, 10);
             this.info.MultiSelect = false;
             this.info.Name = "info";
@@ -753,6 +754,7 @@
             // telegramPage
             // 
             this.telegramPage.BackColor = System.Drawing.Color.Transparent;
+            this.telegramPage.Controls.Add(this.tgChatID);
             this.telegramPage.Controls.Add(this.label4);
             this.telegramPage.Controls.Add(this.tgName);
             this.telegramPage.Controls.Add(this.tgTest);
@@ -769,6 +771,15 @@
             this.telegramPage.TabIndex = 2;
             this.telegramPage.Text = "Telegram";
             this.telegramPage.UseVisualStyleBackColor = true;
+            // 
+            // tgChatID
+            // 
+            this.tgChatID.Location = new System.Drawing.Point(303, 10);
+            this.tgChatID.Name = "TgChatID";
+            this.tgChatID.PlaceholderText = "Chat id";
+            this.tgChatID.Size = new System.Drawing.Size(100, 23);
+            this.tgChatID.TabIndex = 10;
+            this.tgChatID.WordWrap = false;
             // 
             // label4
             // 
@@ -1094,24 +1105,22 @@
             // AllowChangeBaskets
             // 
             this.AllowChangeBaskets.AutoSize = true;
-            this.AllowChangeBaskets.Location = new System.Drawing.Point(220, 30);
+            this.AllowChangeBaskets.Location = new System.Drawing.Point(220, 50);
             this.AllowChangeBaskets.Name = "AllowChangeBaskets";
             this.AllowChangeBaskets.Size = new System.Drawing.Size(83, 19);
             this.AllowChangeBaskets.TabIndex = 0;
-            this.AllowChangeBaskets.Text = "Allow change pairs count";
+            this.AllowChangeBaskets.Text = "Allow Change Baskets";
             this.AllowChangeBaskets.UseVisualStyleBackColor = true;
             this.AllowChangeBaskets.CheckedChanged += new System.EventHandler(this.AllowChangeBaskets_CheckedChanged);
             // 
             // NoCheckLeverage
             // 
-            this.AllowChangeBaskets.AutoSize = true;
-            this.AllowChangeBaskets.Location = new System.Drawing.Point(220, 50);
-            this.AllowChangeBaskets.Name = "NoCheckLeverage";
-            this.AllowChangeBaskets.Size = new System.Drawing.Size(83, 19);
-            this.AllowChangeBaskets.TabIndex = 0;
-            this.AllowChangeBaskets.Text = "Don`t Check Leverage";
-            this.AllowChangeBaskets.UseVisualStyleBackColor = true;
-            
+            this.NoCheckLeverage.AutoSize = true;
+            this.NoCheckLeverage.Location = new System.Drawing.Point(220, 30);
+            this.NoCheckLeverage.Name = "NoCheckLeverage";
+            this.NoCheckLeverage.Text = "Don't check Leverage";
+            this.NoCheckLeverage.Size = new System.Drawing.Size(104, 24);
+            this.NoCheckLeverage.TabIndex = 0;
             // 
             // settingSlot
             // 
@@ -1256,5 +1265,6 @@
         public System.Windows.Forms.TextBox licenceKey;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox settingSlot;
+        private System.Windows.Forms.TextBox tgChatID;
     }
 }

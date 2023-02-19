@@ -251,6 +251,7 @@ namespace BoomTrader_2
                 tgPeriodValue.Text = PeriodVal;
                 tgApi.Text = ini.Read("api", "TELEGRAM");
                 tgName.Text = ini.Read("name", "TELEGRAM");
+                tgChatID.Text = ini.Read("chat", "TELEGRAM");
 
 
 
@@ -561,15 +562,16 @@ namespace BoomTrader_2
 
 
                                 WriteSettings();
+                                
+                                tabs.SelectedTab = infoPage;
 
-
-
-                                if (bot.settings.KeyExists("api", "TELEGRAM") && bot.settings.KeyExists("name", "TELEGRAM"))
+                                if (bot.settings.KeyExists("api", "TELEGRAM") && bot.settings.KeyExists("name", "TELEGRAM") && bot.settings.KeyExists("chat", "TELEGRAM"))
                                 {
                                     var api = bot.settings.Read("api", "TELEGRAM");
                                     var name = bot.settings.Read("name", "TELEGRAM");
+                                    var chat = bot.settings.Read("chat", "TELEGRAM");
 
-                                    bot.Telegram = new Telegram(api, name);
+                                    bot.Telegram = new Telegram(api, name, chat);
                                 }
 
                                 bot.Cfg = new Config
@@ -589,11 +591,12 @@ namespace BoomTrader_2
                                     stopLossState = stopLossState.Checked,
 
                                 };
-
-
+                                
+                               
                                 bot.StartAsync();
                                 SwitchInterfase();
-                                tabs.SelectedTab = infoPage;
+
+
                             }
                             else
                             {
@@ -936,8 +939,9 @@ namespace BoomTrader_2
         private void TgTest_Click(object sender, EventArgs e)
         {
 
-            var telegram = new Telegram(tgApi.Text, tgName.Text);
+            var telegram = new Telegram(tgApi.Text, tgName.Text, tgChatID.Text);
             telegram.SendMsg("Test message");
+            
         }
 
         private void SaveTelegram_Click(object sender, EventArgs e)
@@ -947,6 +951,7 @@ namespace BoomTrader_2
                 var ini = new IniFile("settings.ini");
                 ini.Write("api", tgApi.Text, "TELEGRAM");
                 ini.Write("name", tgName.Text, "TELEGRAM");
+                ini.Write("chat", tgChatID.Text, "TELEGRAM");
                 ini.Write("open", tgOpen.Checked.ToString(), "TELEGRAM");
                 ini.Write("close", tgClose.Checked.ToString(), "TELEGRAM");
                 ini.Write("adds", tgAdds.Checked.ToString(), "TELEGRAM");

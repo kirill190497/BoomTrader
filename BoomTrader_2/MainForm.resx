@@ -57,14 +57,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>This bot does not trade indices of any futures, but generates a synthetic index using the BASKET TRADING strategy. Also, the bot does not make direct purchases or sales (for profit), it earns on the fluctuation of the price difference of two synthetic indices using the strategy of PAIR TRADING. In this way, the bot combines two market neutral strategies.
 Before using it, be sure to familiarize yourself with the bot's working principle https://boomtrader.info/
 WARNING: the cryptocurrency market can be extremely volatile. Keep in mind that trading futures involves high risk, and the boomtrader Team is not responsible for any losses incurred. Trade at your own risk.
 !!!TRADING ON CRYPTOCURRENCY MARKETS INVOLVES RISKS AND MAY RESULT IN LOSSES!!!</value>
   </data>
-  <assembly alias="System.Drawing.Common" name="System.Drawing.Common, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <metadata name="timerSort.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>133, 17</value>
+  </metadata>
+  <metadata name="timerStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>235, 17</value>
+  </metadata>
+  <metadata name="tgtimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>349, 17</value>
+  </metadata>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>441, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAgADg4AAAEAIABwAwAAhgAAABAQAAABACAAaAQAAPYDAAAYGAAAAQAgAIgJAABeCAAAICAAAAEA
         IACoEAAA5hEAADAwAAABACAAqCUAAI4iAABAQAAAAQAgAChCAAA2SAAAgIAAAAEAIAAoCAEAXooAAAAA
